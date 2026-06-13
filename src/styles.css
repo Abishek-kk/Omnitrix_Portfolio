@@ -1,0 +1,172 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Orbitron", "Rajdhani", system-ui, sans-serif;
+  --font-sans: "Rajdhani", system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-neon: var(--neon);
+  --color-neon-dim: var(--neon-dim);
+  --color-panel: var(--panel);
+  --animate-pulse-glow: pulse-glow 2.4s ease-in-out infinite;
+  --animate-spin-slow: spin 18s linear infinite;
+  --animate-spin-reverse: spin-reverse 24s linear infinite;
+  --animate-scan: scan 3s linear infinite;
+  --animate-flicker: flicker 4s linear infinite;
+}
+
+@font-face {
+  font-family: "Orbitron";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/orbitron/v34/yMJMMIlzdpvBhQQL_SC3X9yhF25-T1nyGy6xpmIyXjU1pg.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/rajdhani/v15/LDIxapCSOBg7S-QT7p4GM-aGSV8Tow.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/rajdhani/v15/LDI2apCSOBg7S-QT7pasEcOsc-bGkqIw.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/rajdhani/v15/LDI2apCSOBg7S-QT7paqEsysc-bGkqIw.woff2") format("woff2");
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.13 0.04 150);
+  --foreground: oklch(0.95 0.05 145);
+  --card: oklch(0.16 0.05 150 / 0.6);
+  --card-foreground: oklch(0.95 0.05 145);
+  --popover: oklch(0.13 0.04 150);
+  --popover-foreground: oklch(0.95 0.05 145);
+  --primary: oklch(0.86 0.27 142);
+  --primary-foreground: oklch(0.13 0.04 150);
+  --secondary: oklch(0.22 0.06 150);
+  --secondary-foreground: oklch(0.95 0.05 145);
+  --muted: oklch(0.2 0.04 150);
+  --muted-foreground: oklch(0.7 0.08 145);
+  --accent: oklch(0.86 0.27 142);
+  --accent-foreground: oklch(0.13 0.04 150);
+  --destructive: oklch(0.65 0.25 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.86 0.27 142 / 0.3);
+  --input: oklch(0.86 0.27 142 / 0.2);
+  --ring: oklch(0.86 0.27 142);
+  --neon: oklch(0.88 0.28 142);
+  --neon-dim: oklch(0.6 0.2 142);
+  --panel: oklch(0.15 0.05 150 / 0.7);
+}
+
+.dark {
+  --background: oklch(0.1 0.03 150);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px var(--neon)) drop-shadow(0 0 20px var(--neon)); }
+  50% { opacity: 0.7; filter: drop-shadow(0 0 16px var(--neon)) drop-shadow(0 0 40px var(--neon)); }
+}
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.85; }
+  52% { opacity: 1; }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: 0.06em;
+  }
+  body {
+    background-image:
+      radial-gradient(circle at 20% 20%, oklch(0.86 0.27 142 / 0.08), transparent 40%),
+      radial-gradient(circle at 80% 80%, oklch(0.86 0.27 142 / 0.05), transparent 50%),
+      linear-gradient(rgba(0,255,136,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,136,0.04) 1px, transparent 1px);
+    background-size: auto, auto, 60px 60px, 60px 60px;
+    background-attachment: fixed;
+  }
+}
+
+@utility neon-text {
+  color: var(--neon);
+  text-shadow: 0 0 8px var(--neon), 0 0 20px oklch(0.86 0.27 142 / 0.6);
+}
+@utility neon-border {
+  border: 1px solid var(--neon);
+  box-shadow:
+    0 0 10px oklch(0.86 0.27 142 / 0.5),
+    inset 0 0 10px oklch(0.86 0.27 142 / 0.2);
+}
+@utility neon-panel {
+  background: linear-gradient(135deg, oklch(0.15 0.05 150 / 0.85), oklch(0.12 0.04 150 / 0.85));
+  border: 1px solid oklch(0.86 0.27 142 / 0.4);
+  box-shadow:
+    0 0 20px oklch(0.86 0.27 142 / 0.15),
+    inset 0 0 20px oklch(0 0 0 / 0.3);
+  backdrop-filter: blur(8px);
+}
+@utility neon-glow {
+  box-shadow: 0 0 12px var(--neon), 0 0 24px oklch(0.86 0.27 142 / 0.5);
+}
+@utility hex-clip {
+  clip-path: polygon(25% 5%, 75% 5%, 95% 50%, 75% 95%, 25% 95%, 5% 50%);
+}
+@utility octagon-clip {
+  clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+}
