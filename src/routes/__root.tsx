@@ -37,7 +37,7 @@ export const Route = createRootRoute({
       { property: "og:description", content: "Futuristic Ben 10 Omnitrix-themed personal developer portfolio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@Abishek" },
     ],
     links: [
       {
