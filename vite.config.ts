@@ -6,6 +6,8 @@ import tailwindcss from "@tailwindcss/vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
 
 export default defineConfig(({ command }) => {
+  const isVercel = !!process.env.VERCEL;
+
   return {
     resolve: {
       alias: {
@@ -37,7 +39,7 @@ export default defineConfig(({ command }) => {
       }),
       viteReact(),
       tailwindcss(),
-      command === "build" ? cloudflare({
+      command === "build" && !isVercel ? cloudflare({
         viteEnvironment: { name: "ssr" },
       }) : null,
     ].filter(Boolean),
