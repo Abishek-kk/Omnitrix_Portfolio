@@ -44,7 +44,7 @@ export function PortfolioLayout({
               </svg>
             </div>
             <div>
-              <div className="font-display font-black text-xl tracking-[0.2em] neon-text">OMNITRIX</div>
+              <div className="font-display font-black text-xl tracking-[0.2em] neon-text">ABISHEK</div>
               <div className="text-[10px] tracking-[0.4em] text-neon/70 -mt-1">PORTFOLIO</div>
             </div>
           </MotionLink>

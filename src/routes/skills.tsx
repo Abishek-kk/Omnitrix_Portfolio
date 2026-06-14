@@ -7,7 +7,7 @@ import { getTechLogo } from "@/components/TechLogos";
 export const Route = createFileRoute("/skills")({
   head: () => ({
     meta: [
-      { title: "Skills — Omnitrix Portfolio" },
+      { title: "Skills — Abishek Portfolio" },
       { name: "description", content: "Technical skills, tools, and professional capabilities." },
     ],
   }),

@@ -7,7 +7,7 @@ import { Panel } from "@/components/Panel";
 export const Route = createFileRoute("/certifications")({
   head: () => ({
     meta: [
-      { title: "Certifications — Omnitrix Portfolio" },
+      { title: "Certifications — Abishek Portfolio" },
       { name: "description", content: "Certified courses and credentials." },
     ],
   }),

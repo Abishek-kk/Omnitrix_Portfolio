@@ -30,10 +30,10 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Omnitrix Portfolio — Abishek" },
+      { title: "Abishek Portfolio" },
       { name: "description", content: "Futuristic Ben 10 Omnitrix-themed personal developer portfolio." },
       { name: "author", content: "Abishek" },
-      { property: "og:title", content: "Omnitrix Portfolio — Abishek" },
+      { property: "og:title", content: "Abishek Portfolio" },
       { property: "og:description", content: "Futuristic Ben 10 Omnitrix-themed personal developer portfolio." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

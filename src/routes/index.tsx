@@ -6,9 +6,9 @@ import heroChar from "@/assets/ben10-hero.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Abishek — Omnitrix Portfolio" },
+      { title: "Abishek Portfolio" },
       { name: "description", content: "Futuristic Omnitrix-themed developer portfolio. AI & DS student, frontend developer, creator transforming ideas into code." },
-      { property: "og:title", content: "Abishek — Omnitrix Portfolio" },
+      { property: "og:title", content: "Abishek Portfolio" },
       { property: "og:description", content: "Futuristic Omnitrix-themed developer portfolio." },
     ],
   }),

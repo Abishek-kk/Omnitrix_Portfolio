@@ -9,7 +9,7 @@ import { Panel } from "@/components/Panel";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Omnitrix Portfolio" },
+      { title: "Contact — Abishek Portfolio" },
       { name: "description", content: "Let's connect and build something amazing together." },
     ],
   }),
