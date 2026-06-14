@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown, Code2, User, Mail, Braces } from "lucide-react";
 import heroChar from "@/assets/ben10-hero.png";
-import { OmnitrixDial } from "@/components/OmnitrixDial";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -50,15 +49,6 @@ function Index() {
 
       <div className="relative z-20 mx-auto flex min-h-screen items-center justify-center px-8">
         <div className="w-full max-w-2xl text-center text-white">
-          <div className="relative mx-auto h-72 w-72 sm:h-80 sm:w-80">
-            <div className="absolute inset-0 rounded-full border border-neon/30 neon-glow" />
-            <div className="absolute inset-6 rounded-full border border-neon/40" />
-            <div className="absolute inset-16 rounded-full border border-neon/70" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <OmnitrixDial size={180} />
-            </div>
-          </div>
-
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}

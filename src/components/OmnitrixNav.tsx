@@ -35,7 +35,7 @@ export function OmnitrixNav() {
           >
             <motion.div
               whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              whileTap={{ scale: 0.9 }}
               className={`hex-clip w-20 h-20 flex flex-col items-center justify-center text-center transition-all ${
                 active
                   ? "bg-neon/20 text-neon"

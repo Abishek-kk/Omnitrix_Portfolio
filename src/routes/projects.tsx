@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import { PortfolioLayout } from "@/components/PortfolioLayout";
 import { Panel } from "@/components/Panel";
@@ -22,39 +23,73 @@ const projects = [
 function ProjectsPage() {
   return (
     <PortfolioLayout title="PROJECTS" subtitle="Code. Build. Ship.">
-      <Panel>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {projects.map((p) => (
-<div
-              key={p.title}
-              className="group neon-panel rounded-md p-4 flex flex-col gap-3 hover:bg-neon/5 hover:scale-[1.02] transition"
-            >
-              <div className="flex items-start justify-between">
-                <h3 className="font-display font-bold text-neon tracking-wider">{p.title}</h3>
-                <span className="text-xs text-foreground/60">{p.year}</span>
-              </div>
-              <p className="text-sm text-foreground/80 flex-1">{p.desc}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {p.tags.map((t) => (
-                  <span key={t} className="text-[10px] tracking-wider px-2 py-0.5 rounded-sm border border-neon/40 text-neon">
-                    {t}
-                  </span>
-                ))}
-              </div>
-<div className="flex gap-2 pt-2 border-t border-neon/20">
-                <a href={p.github} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-1 text-xs py-1.5 rounded-sm border border-neon/40 hover:bg-neon/10 transition">
-                  <Github className="w-3 h-3" /> CODE
-                </a>
-                {p.live && (
-                  <a href={p.live} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-1 text-xs py-1.5 rounded-sm border border-neon/40 hover:bg-neon/10 transition">
-                    <ExternalLink className="w-3 h-3" /> LIVE
-                  </a>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-      </Panel>
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <Panel>
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.08 } },
+            }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            {projects.map((p) => (
+              <motion.div
+                key={p.title}
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  show: { opacity: 1, y: 0 },
+                }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                whileTap={{ scale: 0.96 }}
+                className="group neon-panel rounded-md p-4 flex flex-col gap-3 hover:bg-neon/5 transition"
+              >
+                <div className="flex items-start justify-between">
+                  <h3 className="font-display font-bold text-neon tracking-wider">{p.title}</h3>
+                  <span className="text-xs text-foreground/60">{p.year}</span>
+                </div>
+                <p className="text-sm text-foreground/80 flex-1">{p.desc}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {p.tags.map((t) => (
+                    <span key={t} className="text-[10px] tracking-wider px-2 py-0.5 rounded-sm border border-neon/40 text-neon">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div className="flex gap-2 pt-2 border-t border-neon/20">
+                  <motion.a
+                    href={p.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileTap={{ scale: 0.94 }}
+                    className="flex-1 flex items-center justify-center gap-1 text-xs py-1.5 rounded-sm border border-neon/40 hover:bg-neon/10 transition"
+                  >
+                    <Github className="w-3 h-3" /> CODE
+                  </motion.a>
+                  {p.live && (
+                    <motion.a
+                      href={p.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileTap={{ scale: 0.94 }}
+                      className="flex-1 flex items-center justify-center gap-1 text-xs py-1.5 rounded-sm border border-neon/40 hover:bg-neon/10 transition"
+                    >
+                      <ExternalLink className="w-3 h-3" /> LIVE
+                    </motion.a>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </Panel>
+      </motion.div>
     </PortfolioLayout>
   );
 }

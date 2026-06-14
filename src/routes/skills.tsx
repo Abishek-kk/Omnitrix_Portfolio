@@ -83,95 +83,150 @@ function SkillsPage() {
     <PortfolioLayout title="SKILLS" subtitle="My Abilities. My Weapons.">
       <div className="grid gap-6 xl:grid-cols-[1.1fr_0.75fr]">
         <div className="space-y-4">
-          <Panel className="max-w-[760px] mx-auto px-4 py-4">
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.35em] text-neon/70">TECHNICAL SKILLS</p>
-                  <h2 className="mt-2 text-2xl font-black text-white leading-tight">My Core Technologies</h2>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <Panel className="max-w-[760px] mx-auto px-4 py-4">
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <p className="text-[10px] uppercase tracking-[0.35em] text-neon/70">TECHNICAL SKILLS</p>
+                    <h2 className="mt-2 text-2xl font-black text-white leading-tight">My Core Technologies</h2>
+                  </div>
+                  <span className="text-[11px] uppercase tracking-[0.28em] text-neon/80">95% top skill</span>
                 </div>
-                <span className="text-[11px] uppercase tracking-[0.28em] text-neon/80">95% top skill</span>
+                <motion.div
+                  className="grid grid-cols-2 sm:grid-cols-3 gap-2"
+                  variants={{
+                    hidden: {},
+                    show: { transition: { staggerChildren: 0.08 } },
+                  }}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, margin: "-80px" }}
+                >
+                  {tech.map((item) => (
+                    <motion.div
+                      key={item.name}
+                      variants={{
+                        hidden: { opacity: 0, y: 30 },
+                        show: { opacity: 1, y: 0 },
+                      }}
+                      whileHover={{ y: -6, scale: 1.02 }}
+                      whileTap={{ scale: 0.96 }}
+                      className="rounded-[1.5rem] border border-neon/20 bg-black/30 p-2 text-center shadow-[0_0_14px_rgba(0,255,136,0.05)]"
+                    >
+                      <CircularProgress {...item} label={item.name} />
+                    </motion.div>
+                  ))}
+                </motion.div>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {tech.map((item) => (
-                  <div key={item.name} className="rounded-[1.5rem] border border-neon/20 bg-black/30 p-2 text-center shadow-[0_0_14px_rgba(0,255,136,0.05)]">
-                    <CircularProgress {...item} label={item.name} />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Panel>
+            </Panel>
+          </motion.div>
 
-          <Panel>
-            <div className="flex items-center justify-between gap-4">
-              <p className="text-xs uppercase tracking-[0.35em] text-neon/70">OTHER SKILLS</p>
-              <span className="text-sm uppercase tracking-[0.28em] text-neon/80">strengths</span>
-            </div>
-            <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              {otherSkills.map((skill) => (
-                <div key={skill.name} className="rounded-[1.75rem] border border-neon/20 bg-black/30 p-4 flex items-center gap-4">
-                  <div className="rounded-full border border-neon/30 bg-black/40 w-12 h-12 flex items-center justify-center text-neon font-bold">
-                    {skill.name.slice(0, 2).toUpperCase()}
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-bold text-white">{skill.name}</p>
-                    <div className="mt-3 flex gap-1">
-                      {Array.from({ length: 5 }).map((_, index) => (
-                        <span
-                          key={index}
-                          className={`block h-2 rounded-full ${index < skill.level ? "flex-1 bg-neon neon-glow" : "w-3 bg-foreground/20"}`}
-                        />
-                      ))}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <Panel>
+              <div className="flex items-center justify-between gap-4">
+                <p className="text-xs uppercase tracking-[0.35em] text-neon/70">OTHER SKILLS</p>
+                <span className="text-sm uppercase tracking-[0.28em] text-neon/80">strengths</span>
+              </div>
+              <motion.div
+                className="mt-5 grid gap-4 sm:grid-cols-2"
+                variants={{
+                  hidden: {},
+                  show: { transition: { staggerChildren: 0.08 } },
+                }}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-80px" }}
+              >
+                {otherSkills.map((skill) => (
+                  <motion.div
+                    key={skill.name}
+                    variants={{
+                      hidden: { opacity: 0, y: 30 },
+                      show: { opacity: 1, y: 0 },
+                    }}
+                    whileHover={{ y: -6, scale: 1.02 }}
+                    whileTap={{ scale: 0.96 }}
+                    className="rounded-[1.75rem] border border-neon/20 bg-black/30 p-4 flex items-center gap-4"
+                  >
+                    <div className="rounded-full border border-neon/30 bg-black/40 w-12 h-12 flex items-center justify-center text-neon font-bold">
+                      {skill.name.slice(0, 2).toUpperCase()}
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </Panel>
-
+                    <div className="flex-1">
+                      <p className="font-bold text-white">{skill.name}</p>
+                      <div className="mt-3 flex gap-1">
+                        {Array.from({ length: 5 }).map((_, index) => (
+                          <span
+                            key={index}
+                            className={`block h-2 rounded-full ${index < skill.level ? "flex-1 bg-neon neon-glow" : "w-3 bg-foreground/20"}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </Panel>
+          </motion.div>
         </div>
 
         <div className="space-y-4">
-          <Panel className="max-w-[360px] mx-auto rounded-[1.75rem] border border-neon/30 bg-black/20 p-4 shadow-[0_0_40px_rgba(0,255,136,0.14)]">
-            <div className="flex items-center justify-between gap-3 mb-4">
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.35em] text-neon/70">SKILL MATRIX</p>
-                <h3 className="mt-2 text-xl font-black text-white">Performance Map</h3>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            <Panel className="max-w-[360px] mx-auto rounded-[1.75rem] border border-neon/30 bg-black/20 p-4 shadow-[0_0_40px_rgba(0,255,136,0.14)]">
+              <div className="flex items-center justify-between gap-3 mb-4">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.35em] text-neon/70">SKILL MATRIX</p>
+                  <h3 className="mt-2 text-xl font-black text-white">Performance Map</h3>
+                </div>
+                <span className="text-[11px] uppercase tracking-[0.28em] text-neon/80">core stats</span>
               </div>
-              <span className="text-[11px] uppercase tracking-[0.28em] text-neon/80">core stats</span>
-            </div>
-            <div className="relative aspect-square rounded-[1.75rem] border border-neon/20 bg-black/30 p-4 overflow-hidden">
-              <div className="absolute inset-0 grid place-items-center opacity-40">
-                <svg viewBox="0 0 200 200" className="w-full h-full">
-                  <polygon points="100,20 170,80 140,170 60,170 30,80" fill="none" stroke="rgba(0,255,136,0.24)" strokeWidth="1" />
-                  <polygon points="100,40 150,95 125,150 75,150 50,95" fill="none" stroke="rgba(0,255,136,0.18)" strokeWidth="1" />
-                  <polygon points="100,60 130,100 110,130 90,130 70,100" fill="none" stroke="rgba(0,255,136,0.14)" strokeWidth="1" />
-                  <line x1="100" y1="20" x2="100" y2="180" stroke="rgba(0,255,136,0.12)" strokeWidth="1" />
-                  <line x1="30" y1="80" x2="170" y2="80" stroke="rgba(0,255,136,0.12)" strokeWidth="1" />
+              <div className="relative aspect-square rounded-[1.75rem] border border-neon/20 bg-black/30 p-4 overflow-hidden">
+                <div className="absolute inset-0 grid place-items-center opacity-40">
+                  <svg viewBox="0 0 200 200" className="w-full h-full">
+                    <polygon points="100,20 170,80 140,170 60,170 30,80" fill="none" stroke="rgba(0,255,136,0.24)" strokeWidth="1" />
+                    <polygon points="100,40 150,95 125,150 75,150 50,95" fill="none" stroke="rgba(0,255,136,0.18)" strokeWidth="1" />
+                    <polygon points="100,60 130,100 110,130 90,130 70,100" fill="none" stroke="rgba(0,255,136,0.14)" strokeWidth="1" />
+                    <line x1="100" y1="20" x2="100" y2="180" stroke="rgba(0,255,136,0.12)" strokeWidth="1" />
+                    <line x1="30" y1="80" x2="170" y2="80" stroke="rgba(0,255,136,0.12)" strokeWidth="1" />
+                  </svg>
+                </div>
+                <svg viewBox="0 0 200 200" className="relative w-full h-full">
+                  <polygon points="100,40 150,95 125,150 75,150 50,95" fill="rgba(0,255,136,0.16)" stroke="var(--neon)" strokeWidth="2" />
+                  <circle cx="100" cy="40" r="4" fill="var(--neon)" />
+                  <circle cx="150" cy="95" r="4" fill="var(--neon)" />
+                  <circle cx="125" cy="150" r="4" fill="var(--neon)" />
+                  <circle cx="75" cy="150" r="4" fill="var(--neon)" />
+                  <circle cx="50" cy="95" r="4" fill="var(--neon)" />
                 </svg>
-              </div>
-              <svg viewBox="0 0 200 200" className="relative w-full h-full">
-                <polygon points="100,40 150,95 125,150 75,150 50,95" fill="rgba(0,255,136,0.16)" stroke="var(--neon)" strokeWidth="2" />
-                <circle cx="100" cy="40" r="4" fill="var(--neon)" />
-                <circle cx="150" cy="95" r="4" fill="var(--neon)" />
-                <circle cx="125" cy="150" r="4" fill="var(--neon)" />
-                <circle cx="75" cy="150" r="4" fill="var(--neon)" />
-                <circle cx="50" cy="95" r="4" fill="var(--neon)" />
-              </svg>
-              <div className="absolute inset-0 flex flex-col justify-between px-4 py-6 pointer-events-none">
-                <span className="self-center text-[10px] uppercase tracking-[0.28em] text-neon/70">Frontend</span>
-                <div className="flex justify-between gap-4">
-                  <span className="text-[10px] uppercase tracking-[0.28em] text-neon/70">Problem Solving</span>
-                  <span className="text-[10px] uppercase tracking-[0.28em] text-neon/70">Backend</span>
-                </div>
-                <div className="flex justify-between gap-4">
-                  <span className="text-[10px] uppercase tracking-[0.28em] text-neon/70">Tools</span>
-                  <span className="text-[10px] uppercase tracking-[0.28em] text-neon/70">DSA</span>
+                <div className="absolute inset-0 flex flex-col justify-between px-4 py-6 pointer-events-none">
+                  <span className="self-center text-[10px] uppercase tracking-[0.28em] text-neon/70">Frontend</span>
+                  <div className="flex justify-between gap-4">
+                    <span className="text-[10px] uppercase tracking-[0.28em] text-neon/70">Problem Solving</span>
+                    <span className="text-[10px] uppercase tracking-[0.28em] text-neon/70">Backend</span>
+                  </div>
+                  <div className="flex justify-between gap-4">
+                    <span className="text-[10px] uppercase tracking-[0.28em] text-neon/70">Tools</span>
+                    <span className="text-[10px] uppercase tracking-[0.28em] text-neon/70">DSA</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Panel>
-
+            </Panel>
+          </motion.div>
         </div>
       </div>
     </PortfolioLayout>
