@@ -4,6 +4,7 @@ import viteReact from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 import { cloudflare } from "@cloudflare/vite-plugin";
+import { nitro } from "nitro/vite";
 
 export default defineConfig(({ command }) => {
   const isVercel = !!process.env.VERCEL;
@@ -39,6 +40,7 @@ export default defineConfig(({ command }) => {
       }),
       viteReact(),
       tailwindcss(),
+      isVercel ? nitro() : null,
       command === "build" && !isVercel ? cloudflare({
         viteEnvironment: { name: "ssr" },
       }) : null,
